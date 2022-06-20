@@ -13,6 +13,7 @@ public class GameFlow : MonoBehaviour
     public Animator questAnimate;
     public Animator phoneAnimate;
     [Header("UI's & GameObjects")]
+    public GameObject topQuestMenu;
     public GameObject questBubble;
     public GameObject overlayUI;
     public GameObject youFailedUI;
@@ -87,10 +88,12 @@ public class GameFlow : MonoBehaviour
 
         for (int i = 0; i <= 2; i++)
         {
-
             orderDialogue.transform.GetChild(i).GetComponent<Image>().sprite = spritesObject.transform.GetChild(randoms[i]).GetComponent<SpriteRenderer>().sprite;
             orderDialogue.transform.GetChild(i).GetComponent<Image>().SetNativeSize();
-
+        }
+        for (int i = 0; i <= 2; i++)
+        {
+            topQuestMenu.transform.GetChild(i).GetComponent<Image>().sprite = orderDialogue.transform.GetChild(i).GetComponent<Image>().sprite;
         }
 
     }
@@ -100,20 +103,17 @@ public class GameFlow : MonoBehaviour
     {
 
         questAnimate.SetBool("isQuestActive", true);
-        cams.MoveToCenterDrawers();
         Toggle(startButton);
         Toggle(bottomMenu);
-        Toggle(mainUI);
-
-        Toggle(leftArrow);
-        Toggle(rightArrow);
+        
         hasStarted = true;
         phoneAnimate.Play("SmartphoneMoveOut");
-    }
+        topQuestMenu.SetActive(true);
+    }   
     public void EndPickPhase()
     {
-        cams.pos = 1;
-        cams.MoveToTable();
+
+
         Toggle(bottomMenu);
         isDone = true;
         hasStarted = false;
@@ -128,7 +128,6 @@ public class GameFlow : MonoBehaviour
         {
             boxAnimate.Play("PresentFadeIn");
             phoneAnimate.Play("SmartphoneMoveOut");
-
         }
     }
     public void EndPackPhase()

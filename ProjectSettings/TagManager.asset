@@ -11,6 +11,7 @@ TagManager:
   - FxTemporaire
   - Environment
   - Phone
+  - Drawer
   layers:
   - Default
   - TransparentFX

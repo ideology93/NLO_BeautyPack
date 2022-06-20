@@ -53,7 +53,7 @@ public class SelectObject : MonoBehaviour
             AddSelectedObject();
         }
         if (flow.isPackOver)
-        {
+        {   
             timer -= Time.deltaTime;
             if (timer <= 0 && timer >= -1)
             {
