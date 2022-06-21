@@ -3377,7 +3377,7 @@ RectTransform:
   m_Children:
   - {fileID: 682472065}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3398,8 +3398,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 133742037}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!95 &133742037
 Animator:
   serializedVersion: 3
@@ -3887,8 +3890,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 154064012}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!65 &154064014
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4438,8 +4444,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 176115437}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!65 &176115436
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6181,7 +6190,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &225011899
 GameObject:
@@ -7281,7 +7290,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &265400141 stripped
 GameObject:
@@ -9866,7 +9875,7 @@ Transform:
   - {fileID: 1493709012}
   - {fileID: 1163334927}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &371188422
 PrefabInstance:
@@ -12381,8 +12390,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 461514953}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!65 &461514955
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16420,7 +16432,7 @@ RectTransform:
   - {fileID: 1226435350}
   - {fileID: 1955480611}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -16800,7 +16812,7 @@ Transform:
   - {fileID: 1275483006}
   - {fileID: 958729309}
   m_Father: {fileID: 0}
-  m_RootOrder: 23
+  m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -180}
 --- !u!1 &642221464 stripped
 GameObject:
@@ -17627,8 +17639,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 673607013}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!65 &673607015
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20324,7 +20339,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &784962314
 GameObject:
@@ -20763,7 +20778,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 14.377, y: -90, z: 0}
 --- !u!114 &789369147
 MonoBehaviour:
@@ -21110,8 +21125,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 798966532}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!65 &798966534
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22165,7 +22183,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 38.245, y: -85.172, z: -1458.597}
 --- !u!1 &840713757
 GameObject:
@@ -23317,8 +23335,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4486671, y: 0.02, z: 0.21681213}
-  m_Center: {x: -0.0000010888384, y: -0.09, z: -0.000010028489}
+  m_Size: {x: 0.4486671, y: 0.05, z: 0.21681213}
+  m_Center: {x: -0.0000010888384, y: -0.095, z: -0.000010028489}
 --- !u!114 &872594457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23333,8 +23351,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 872594458}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!95 &872594458
 Animator:
   serializedVersion: 3
@@ -24693,7 +24714,7 @@ Transform:
   - {fileID: 565144332}
   - {fileID: 1749924566}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &909614558 stripped
 GameObject:
@@ -24862,8 +24883,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 935947787}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!65 &935947789
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -26568,7 +26592,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 21
+  m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1010062904
 Rigidbody:
@@ -27744,8 +27768,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4486671, y: 0.02, z: 0.21681213}
-  m_Center: {x: 0.0000002779217, y: -0.09, z: -0.00544443}
+  m_Size: {x: 0.4486671, y: 0.05, z: 0.21681213}
+  m_Center: {x: 0.0000002779217, y: -0.095, z: -0.00544443}
 --- !u!114 &1064320364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27760,8 +27784,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 1064320365}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!95 &1064320365
 Animator:
   serializedVersion: 3
@@ -31745,6 +31772,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1001 &1244106670
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.98094916
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.73164815
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_Name
+      value: paleta_gotova1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6721992597810065892, guid: d0673097490e34a4c8d07adff9ff6cfb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.487
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d0673097490e34a4c8d07adff9ff6cfb, type: 3}
 --- !u!1001 &1246412684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32016,7 +32117,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1254179652
 MonoBehaviour:
@@ -32550,8 +32651,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4486671, y: 0.02, z: 0.23300217}
-  m_Center: {x: 0.00000012891009, y: -0.09, z: -0.007405275}
+  m_Size: {x: 0.4486671, y: 0.05, z: 0.23300217}
+  m_Center: {x: 0.00000012891009, y: -0.095, z: -0.007405275}
 --- !u!114 &1284723973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32566,8 +32667,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 1284723974}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!95 &1284723974
 Animator:
   serializedVersion: 3
@@ -35214,7 +35318,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b3e5de002f17a2843b305eaca36bae6d,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b3e5de002f17a2843b305eaca36bae6d,
         type: 3}
@@ -40595,7 +40699,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1616108052
 GameObject:
@@ -41443,7 +41547,7 @@ Transform:
   m_Children:
   - {fileID: 764544461}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1664014326 stripped
 Transform:
@@ -42571,7 +42675,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 781e07b6c5d3b1d4287795c3ec7efcd2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 781e07b6c5d3b1d4287795c3ec7efcd2,
         type: 3}
@@ -42966,7 +43070,7 @@ Transform:
   - {fileID: 318689252}
   - {fileID: 374348095}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1716747979 stripped
 GameObject:
@@ -43155,7 +43259,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1731111673
 GameObject:
@@ -43364,8 +43468,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 1731929574}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!65 &1731929573
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -47921,8 +48028,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 1912842675}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!65 &1912842677
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -50457,7 +50567,7 @@ Transform:
   - {fileID: 987495919}
   - {fileID: 5258091577459707417}
   m_Father: {fileID: 0}
-  m_RootOrder: 22
+  m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: -180}
 --- !u!1 &2030231921 stripped
 GameObject:
@@ -50680,7 +50790,7 @@ Transform:
   - {fileID: 1856502858}
   - {fileID: 1132250930}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2047958099
 PrefabInstance:
@@ -53140,7 +53250,7 @@ Transform:
   - {fileID: 1261750307}
   - {fileID: 2514885698585092697}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &750477259781011209
 MeshRenderer:
@@ -53226,8 +53336,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 888697524600814468}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!95 &888697524600814468
 Animator:
   serializedVersion: 3
@@ -53258,8 +53371,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4486671, y: 0.02, z: 0.21681213}
-  m_Center: {x: 0.0000002779217, y: -0.09, z: -0.00544443}
+  m_Size: {x: 0.4486671, y: 0.05, z: 0.21681213}
+  m_Center: {x: 0.0000002779217, y: -0.094, z: -0.00544443}
 --- !u!4 &895955486948214117
 Transform:
   m_ObjectHideFlags: 0
@@ -54701,8 +54814,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 3976804752865926542}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!95 &3976804752865926542
 Animator:
   serializedVersion: 3
@@ -54800,7 +54916,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: -6216866112798177072, guid: 036904ae6c365034386787e86606098b, type: 3}
+  - {fileID: 2100000, guid: 86eee91c175fc10429af72d00c404049, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -55025,7 +55141,7 @@ Transform:
   - {fileID: 1327138360}
   - {fileID: 1699466601045675670}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 270}
 --- !u!1001 &4619345095421449070
 PrefabInstance:
@@ -55877,8 +55993,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 6074239262467063588}
   open: 0
-  flow: {fileID: 573106822}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!95 &6074239262467063588
 Animator:
   serializedVersion: 3
@@ -56753,8 +56872,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 6708776461607927314}
   open: 0
-  flow: {fileID: 573106822}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!33 &6732519019420790757
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -57107,8 +57229,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 7884360475702199099}
   open: 0
-  flow: {fileID: 573106822}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!95 &7884360475702199099
 Animator:
   serializedVersion: 3
@@ -57162,7 +57287,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8785027010909430926}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -8.68, y: 0.53, z: -6.87}
+  m_LocalPosition: {x: -8.68, y: 0.53, z: -4.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 527490477}
@@ -57171,7 +57296,7 @@ Transform:
   - {fileID: 3474773852313331970}
   - {fileID: 6516121615290154740}
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!23 &8268130070652354669
 MeshRenderer:
@@ -57249,8 +57374,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 8389660486266862713}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!95 &8389660486266862713
 Animator:
   serializedVersion: 3
@@ -57281,8 +57409,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4486671, y: 0.02, z: 0.23300217}
-  m_Center: {x: 0.00000012891009, y: -0.09, z: -0.007405275}
+  m_Size: {x: 0.4486671, y: 0.05, z: 0.23300217}
+  m_Center: {x: 0.00000012891009, y: -0.094, z: -0.007405275}
 --- !u!23 &8446601080763245412
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -57420,8 +57548,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pull: {fileID: 8562165742366834513}
   open: 0
-  flow: {fileID: 0}
   drawer: 0
+  gm: {fileID: 0}
+  isOpen: 0
+  camPos: 0
+  state: {fileID: 0}
 --- !u!95 &8562165742366834513
 Animator:
   serializedVersion: 3
@@ -57452,8 +57583,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.4486671, y: 0.02, z: 0.21681213}
-  m_Center: {x: -0.0000010888384, y: -0.09, z: -0.000010028489}
+  m_Size: {x: 0.4486671, y: 0.05, z: 0.21681213}
+  m_Center: {x: -0.0000010888384, y: -0.094, z: -0.000010028489}
 --- !u!23 &8600983608350587802
 MeshRenderer:
   m_ObjectHideFlags: 0
