@@ -17,6 +17,7 @@ public class Drawer_Pull_Z : MonoBehaviour
     public bool isOpen;
     public int camPos;
     public Drawer_Pull_Z state;
+   
 
 
 
@@ -37,23 +38,19 @@ public class Drawer_Pull_Z : MonoBehaviour
             {
                 if (Physics.Raycast(ray, out hit))
                 {
-                    Test(hit);
-                    if (!isOpen)
+                    if (hit.transform.tag == "Drawer" && !EventSystem.current.IsPointerOverGameObject())
                     {
+                        Test(hit);
+                        camPos = 1;
+                        drawer = int.Parse(hit.transform.name);
+                        Debug.Log(drawer);
+                        if (hit.transform.GetComponent<Drawer_Pull_Z>().open)
+                            cams.MoveCamera(drawer);
 
-
-                        if (hit.transform.tag == "Drawer" && !EventSystem.current.IsPointerOverGameObject())
-                        {
-                            camPos = 1;
-                            drawer = int.Parse(hit.transform.name);
-                            Debug.Log(drawer);
-                            if (hit.transform.GetComponent<Drawer_Pull_Z>().open)
-                                cams.MoveCamera(drawer);
-
-                        }
                     }
-
                 }
+
+
             }
         }
     }
@@ -93,7 +90,7 @@ public class Drawer_Pull_Z : MonoBehaviour
     {
         if (!EventSystem.current.IsPointerOverGameObject())
         {
-            isOpen = true;
+            flow.isOpen = true;
             pull.Play("openpull");
             open = true;
             yield return new WaitForSeconds(.5f);
@@ -102,7 +99,7 @@ public class Drawer_Pull_Z : MonoBehaviour
 
     public IEnumerator closing()
     {
-        isOpen = false;
+        flow.isOpen = false;
         pull.Play("closepush");
         open = false;
         yield return new WaitForSeconds(.5f);
@@ -137,26 +134,28 @@ public class Drawer_Pull_Z : MonoBehaviour
     // }
     void Test(RaycastHit hit)
     {
-        isOpen=false;
+        Debug.Log("ColliderName" + hit.transform.name);
         if (flow.hasStarted)
         {
             {
-                
-                if (!hit.transform.GetComponent<Drawer_Pull_Z>().open && !hit.transform.GetComponent<Drawer_Pull_Z>().open)
+
+                if (!hit.transform.GetComponent<Drawer_Pull_Z>().open && !flow.isOpen)
                 {
                     if (Input.GetMouseButtonDown(0))
                     {
-
+                        CollidersOff(int.Parse(hit.transform.name));
                         StartCoroutine(hit.transform.GetComponent<Drawer_Pull_Z>().opening());
-                        
+
                     }
                 }
                 else
                 {
-                    if (hit.transform.GetComponent<Drawer_Pull_Z>().open && !hit.transform.GetComponent<Drawer_Pull_Z>().open)
+                    if (hit.transform.GetComponent<Drawer_Pull_Z>().open)
                     {
+
                         if (Input.GetMouseButtonDown(0))
                         {
+                            CollidersOn();
                             StartCoroutine(hit.transform.GetComponent<Drawer_Pull_Z>().closing());
                         }
                     }
@@ -166,5 +165,27 @@ public class Drawer_Pull_Z : MonoBehaviour
             }
         }
     }
+    void CollidersOff(int a)
+    {
+        Debug.Log("hit drawer is " +a);
+        for (int i = 0; i < flow.drawers.Length; i++)
+        {
+            if (i != a)
+            {
+                Debug.Log("we turned off" + i);
+                flow.drawers[i].gameObject.GetComponent<BoxCollider>().enabled = false;
+            }
+        }
+    }
+    void CollidersOn()
+    {
+        for (int i = 0; i < flow.drawers.Length; i++)
+        {
+
+           flow.drawers[i].gameObject.GetComponent<BoxCollider>().enabled = true;
+
+        }
+    }
+
 
 }

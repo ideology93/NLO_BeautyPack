@@ -40,6 +40,9 @@ public class GameFlow : MonoBehaviour
     [Header("Checkers")]
     int orders = 0;
     private float timer;
+    public bool isOpen;
+    
+    public GameObject[] drawers;
 
     int[] randoms = new int[3];
     [HideInInspector]
