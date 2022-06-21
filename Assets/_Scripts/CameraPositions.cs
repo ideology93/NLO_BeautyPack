@@ -13,6 +13,7 @@ public class CameraPositions : MonoBehaviour
     private Transform[] positions;
     [HideInInspector]
     public int pos;
+    public Transform[] cameras;
     void Start()
     {
         positions = new Transform[] { leftDrawer, centerDrawer, rightDrawer };
@@ -104,6 +105,11 @@ public class CameraPositions : MonoBehaviour
                 break;
         }
 
+    }
+    public void MoveCamera(int pos)
+    {
+        DOTween.To(() => gameObject.transform.position, x => gameObject.transform.position = x, cameras[pos].transform.position, 1);
+        transform.DORotateQuaternion(cameras[pos].transform.rotation, 1);
     }
 
 }

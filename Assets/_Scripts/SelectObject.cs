@@ -15,6 +15,7 @@ public class SelectObject : MonoBehaviour
     public Transform present;
     public GameObject dialogue;
     public GameObject sendUI;
+    private CameraPositions cams;
 
     [HideInInspector]
     public int tableCount = 0;
@@ -26,12 +27,8 @@ public class SelectObject : MonoBehaviour
     public Animator anim;
     [SerializeField] private GameFlow flow;
     [SerializeField] private Present pres;
-
-
-
-
-
-
+    public Drawer_Pull_Z drawer;
+    public Animator drawerAnimate;
     void Awake()
     {
         orderCount = 0;
@@ -42,18 +39,22 @@ public class SelectObject : MonoBehaviour
     void Start()
     {
         orderCount = flow.expectedOrder.Count;
+        cams = Camera.main.GetComponent<CameraPositions>();
     }
 
     // Update is called once per frame    
     void Update()
     {
-
-        if (Input.GetMouseButtonDown(0))
+        
+        if (!flow.isPackOver && flow.hasStarted)
         {
-            AddSelectedObject();
+            if (Input.GetMouseButtonDown(0))
+            {
+                AddSelectedObject();
+            }
         }
         if (flow.isPackOver)
-        {   
+        {
             timer -= Time.deltaTime;
             if (timer <= 0 && timer >= -1)
             {
@@ -99,7 +100,9 @@ public class SelectObject : MonoBehaviour
                     flow.currentOrder.Add(hit.transform.name);
 
                     hit.transform.SetParent(GameObject.Find("ObjectsOnTable").transform);
-
+                    cams.MoveToTable();
+                    drawer.camPos = 0;
+                    drawerAnimate.Play("closepush");
                     tableCount++;
                     if (orderCount == tableCount)
                     {
