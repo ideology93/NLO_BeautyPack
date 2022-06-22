@@ -8,7 +8,7 @@ public class CameraPositions : MonoBehaviour
 
 
     [Header("UI & GameObjects")]
-    public Transform table, leftDrawer, centerDrawer, rightDrawer;
+    public Transform table, leftDrawer, centerDrawer, rightDrawer, pack;
     public GameObject leftArrow, rightArrow, cameraOptions_1, cameraOptions_2, cameraOptions_3, testCanvas;
     private Transform[] positions;
     [HideInInspector]
@@ -37,8 +37,8 @@ public class CameraPositions : MonoBehaviour
     }
     public void MoveToTable()
     {
-        DOTween.To(() => gameObject.transform.position, x => gameObject.transform.position = x, table.transform.position, 3);
-        transform.DORotateQuaternion(table.transform.rotation, 3);
+        DOTween.To(() => gameObject.transform.position, x => gameObject.transform.position = x, table.transform.position, 0.75f);
+        transform.DORotateQuaternion(table.transform.rotation, 0.75f);
 
     }
     public void MoveLeft()
@@ -108,8 +108,13 @@ public class CameraPositions : MonoBehaviour
     }
     public void MoveCamera(int pos)
     {
-        DOTween.To(() => gameObject.transform.position, x => gameObject.transform.position = x, cameras[pos].transform.position, 1);
-        transform.DORotateQuaternion(cameras[pos].transform.rotation, 1);
+        DOTween.To(() => gameObject.transform.position, x => gameObject.transform.position = x, cameras[pos].transform.position, 0.75f);
+        transform.DORotateQuaternion(cameras[pos].transform.rotation, 0.75f);
+    }
+    public void PackCamera()
+    {
+        DOTween.To(() => gameObject.transform.position, x => gameObject.transform.position = x, pack.transform.position, 0.75f);
+        transform.DORotateQuaternion(pack.transform.rotation, 0.75f);
     }
 
 }

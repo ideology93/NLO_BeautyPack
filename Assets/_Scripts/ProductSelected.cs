@@ -7,6 +7,7 @@ public class ProductSelected : MonoBehaviour
     public GameObject spritesObject;
     public bool isSelected = false;
     public bool isAdded = false;
+    public bool isInDrawer = true;
     public  Sprite sprite;
 
     void Start()

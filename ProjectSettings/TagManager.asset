@@ -12,6 +12,7 @@ TagManager:
   - Environment
   - Phone
   - Drawer
+  - LazySusan
   layers:
   - Default
   - TransparentFX

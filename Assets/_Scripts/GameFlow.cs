@@ -41,8 +41,8 @@ public class GameFlow : MonoBehaviour
     int orders = 0;
     private float timer;
     public bool isOpen;
-    
-    public GameObject[] drawers;
+
+    public Collider[] drawers;
 
     int[] randoms = new int[3];
     [HideInInspector]
@@ -104,22 +104,22 @@ public class GameFlow : MonoBehaviour
 
     public void StartLevel()
     {
-
+        hasStarted = true;
         questAnimate.SetBool("isQuestActive", true);
         Toggle(startButton);
         Toggle(bottomMenu);
-        
-        hasStarted = true;
+
+
         phoneAnimate.Play("SmartphoneMoveOut");
         topQuestMenu.SetActive(true);
-    }   
+    }
     public void EndPickPhase()
     {
 
 
         Toggle(bottomMenu);
         isDone = true;
-        hasStarted = false;
+    
         isPickOver = true;
         leftArrow.SetActive(false);
         rightArrow.SetActive(false);
@@ -129,6 +129,7 @@ public class GameFlow : MonoBehaviour
     {
         if (isPickOver)
         {
+            cams.PackCamera();
             boxAnimate.Play("PresentFadeIn");
             phoneAnimate.Play("SmartphoneMoveOut");
         }

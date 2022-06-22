@@ -45,7 +45,8 @@ public class SelectObject : MonoBehaviour
     // Update is called once per frame    
     void Update()
     {
-        
+        print("one: " + flow.isPackOver);
+        print("one: " + flow.hasStarted);
         if (!flow.isPackOver && flow.hasStarted)
         {
             if (Input.GetMouseButtonDown(0))
@@ -68,9 +69,10 @@ public class SelectObject : MonoBehaviour
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-
+        
         if (tableCount < orderCount && flow.bottomMenu.transform.GetChild(tableCount).gameObject.activeSelf)
         {
+            print("here");
             //take objects out of drawer
             if (Physics.Raycast(ray, out hit))
             {
@@ -91,18 +93,20 @@ public class SelectObject : MonoBehaviour
 
                     flow.bottomMenu.transform.GetChild(tableCount).GetComponent<Image>().sprite = hit.transform.GetComponent<ProductSelected>().sprite;
                     Color temp = flow.bottomMenu.transform.GetChild(tableCount).GetComponent<Image>().color;
-                    temp.a = 0.5f;
+                    temp.a = 1f;
+                    if (hit.transform.GetComponent<ProductSelected>().isInDrawer)
+                    {
+                        hit.transform.parent.parent.GetComponent<DrawerState>().pull.Play("closepush");
+                    }
+                    flow.isOpen = false;
                     flow.bottomMenu.transform.GetChild(tableCount).GetComponent<Image>().color = temp;
-
-
-
                     //add name to the list
                     flow.currentOrder.Add(hit.transform.name);
 
                     hit.transform.SetParent(GameObject.Find("ObjectsOnTable").transform);
                     cams.MoveToTable();
                     drawer.camPos = 0;
-                    drawerAnimate.Play("closepush");
+
                     tableCount++;
                     if (orderCount == tableCount)
                     {
@@ -116,9 +120,11 @@ public class SelectObject : MonoBehaviour
         //put objects from table into box
         else if (Physics.Raycast(ray, out hit))
         {
+            print("here");
             if (hit.transform.tag == "Beauty" && !hit.transform.GetComponent<ProductSelected>().isAdded)
             {
                 am.PlayClip(4);
+                print("here");
                 hit.transform.SetParent(GameObject.Find("Present").transform);
                 StartCoroutine(AddToBox(hit));
                 boxCount++;
@@ -138,7 +144,8 @@ public class SelectObject : MonoBehaviour
         {
             hit.transform.DOJump(hit.transform.position, 1, 1, 2, false);
             yield return new WaitForSeconds(0.5f);
-            DOTween.To(() => hit.transform.position, x => hit.transform.position = x, positions.GetChild(tableCount).position, 2);
+            DOTween.To(() => hit.transform.position, x => hit.transform.position = x, positions.GetChild(tableCount).position, 1.5f);
+            hit.transform.DORotateQuaternion(positions.GetChild(tableCount).rotation, 1.25f);
             hit.transform.GetComponent<ProductSelected>().isSelected = true;
         }
 
