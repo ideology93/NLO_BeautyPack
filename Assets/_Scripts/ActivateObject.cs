@@ -20,12 +20,12 @@ public class ActivateObject : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log("We're here");
+                Debug.Log("We're here");    
                 if (hit.transform.tag == "LazySusan")
-                {
+                {   
                     Debug.Log("Targeted Susan");
                     DragAndRotate objectScript = hit.collider.GetComponent<DragAndRotate>();
-                    objectScript.isActive = !objectScript.isActive;
+                    objectScript.isActive = true;
                 }
             }
         }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using DG.Tweening;
+    using DG.Tweening;
 public class Present : MonoBehaviour
 {
     public GameObject particle;
@@ -15,17 +15,6 @@ public class Present : MonoBehaviour
     public List<Transform> sidesToRend = new List<Transform>();
 
 
-    public void Update()
-    {
-
-
-    }
-    public void Start()
-    {
-
-      
-
-    }
     public void ChangePresentColor(int a)
     {
         if (a == 2)
@@ -57,7 +46,7 @@ public class Present : MonoBehaviour
     public void Rotate()
     {
 
-        StartCoroutine(MoveLid());
+        //StartCoroutine(MoveLid());
 
     }
     public IEnumerator MoveLid()

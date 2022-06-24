@@ -13,6 +13,11 @@ TagManager:
   - Phone
   - Drawer
   - LazySusan
+  - Confetti
+  - Destroyer
+  - Inbox
+  - Sticker
+  - Card
   layers:
   - Default
   - TransparentFX

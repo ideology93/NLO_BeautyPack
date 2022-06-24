@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using PaintIn3D;
+using DG.Tweening;
 
 public class GameFlow : MonoBehaviour
 {
@@ -27,6 +29,8 @@ public class GameFlow : MonoBehaviour
     public GameObject bottomMenu;
     public GameObject orderDialogue;
     public GameObject spritesObject;
+    public GameObject doneButton;
+
     public Sprite questionMark;
     public CameraPositions cams;
     [Header("Lists")]
@@ -43,10 +47,19 @@ public class GameFlow : MonoBehaviour
     public bool isOpen;
 
     public Collider[] drawers;
+    public GameObject confettiSpawner;
+    private DragObject confettiEnabler;
+    public GameObject stickersUI;
+    public GameObject stickersObject;
+    public GameObject stickerUI_Image;
+    public GameObject card;
+    public GameObject P3DManager;
+    public GameObject[] objectsToKill;
 
     int[] randoms = new int[3];
     [HideInInspector]
-    public bool isPickOver, isPackOver, isAdded, isDone, hasStarted;
+    public bool isPickOver, confettiPhase, confettiPhase2, isInAddingPhase, isPackOver, isAdded, isDone, hasStarted;
+    public bool allowDrag;
 
     void Awake()
     {
@@ -76,8 +89,21 @@ public class GameFlow : MonoBehaviour
         }
         //FillBottomMenu();
 
+        foreach (Transform s in stickersObject.transform)
+        {
+            GameObject obj = stickerUI_Image;
+            Instantiate(obj, obj.transform.position, Quaternion.identity, stickersUI.transform);
+            obj.transform.GetComponent<Image>().sprite = s.GetComponent<SpriteRenderer>().sprite;
+
+            obj.SetActive(true);
+        }
 
 
+    }
+    void Start()
+    {
+        confettiEnabler = confettiSpawner.GetComponent<DragObject>();
+        P3DManager = GameObject.Find("P3DManager");
     }
 
     public void GenerateQuest()
@@ -108,36 +134,93 @@ public class GameFlow : MonoBehaviour
         questAnimate.SetBool("isQuestActive", true);
         Toggle(startButton);
         Toggle(bottomMenu);
-
-
         phoneAnimate.Play("SmartphoneMoveOut");
         topQuestMenu.SetActive(true);
     }
     public void EndPickPhase()
     {
-
-
         Toggle(bottomMenu);
         isDone = true;
-    
         isPickOver = true;
         leftArrow.SetActive(false);
         rightArrow.SetActive(false);
 
     }
+    public void StartConfettiPhase()
+    {
+        print("Started confetti phase 1");
+        confettiPhase = true;
+        confettiSpawner.SetActive(true);
+        cams.PackCamera();
+        boxAnimate.Play("PresentGetIn");
+
+    }
+    public void StartConfettiPhaseTwo()
+    {
+        print("Started confetti phase 2");
+        allowDrag = false;
+        confettiEnabler.isConfetti = true;
+        confettiPhase2 = true;
+        confettiSpawner.SetActive(true);
+
+
+    }
+    public void EndConfettiPhase()
+    {
+        confettiPhase = false;
+        allowDrag = true;
+        confettiSpawner.SetActive(false);
+    }
+    public void EndConfettiPhaseTwo()
+    {
+        confettiPhase2 = false;
+        allowDrag = true;
+        confettiSpawner.SetActive(false);
+        StartCardPhase();
+    }
+    public void StartCardPhase()
+    {
+        print("incardphase");
+        card.transform.DOMove(card.transform.position + new Vector3(0, 0, 2.80f), 1.5f, false);
+
+    }
+    public void EndCardPhase()
+    {
+        P3DManager.GetComponent<P3dHitScreen>().enabled = true;
+        EndPackPhase();
+        StartStickerPhase();
+    }
+    public void StartStickerPhase()
+    {
+        stickersUI.SetActive(true);
+        doneButton.SetActive(true);
+        ObjectDestroyer();
+
+    }
+    public void EndStickerPhase()
+    {
+        P3DManager.GetComponent<P3dHitScreen>().enabled = false;
+        stickersUI.SetActive(false);
+        sendUI.SetActive(true);
+        doneButton.SetActive(false);
+    }
+
     public void StartPackPhase()
     {
         if (isPickOver)
         {
-            cams.PackCamera();
-            boxAnimate.Play("PresentFadeIn");
-            phoneAnimate.Play("SmartphoneMoveOut");
+
         }
     }
     public void EndPackPhase()
     {
         if (isPackOver)
-            sendUI.SetActive(true);
+        {
+
+            boxAnimate.Play("PresentClose");
+        }
+
+
     }
     public void Send()
     {
@@ -228,6 +311,18 @@ public class GameFlow : MonoBehaviour
         else
         {
             ui.SetActive(true);
+        }
+    }
+    public void ObjectDestroyer()
+    {
+        GameObject[] go = GameObject.FindGameObjectsWithTag("Confetti");
+        for (int i = 0; i < objectsToKill.Length; i++)
+        {
+            Destroy(objectsToKill[i],2f);
+        }
+        for (int i = 0; i < go.Length; i++)
+        {
+            Destroy(go[i],2f);
         }
     }
 

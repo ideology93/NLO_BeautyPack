@@ -17,9 +17,9 @@ public class SelectObject : MonoBehaviour
     public GameObject sendUI;
     private CameraPositions cams;
 
-    [HideInInspector]
-    public int tableCount = 0;
-    public int boxCount = 0;
+
+    [SerializeField] public int tableCount = 0;
+    [SerializeField] public int boxCount = 0;
     public int orderCount;
     private float timer = 1;
 
@@ -38,15 +38,15 @@ public class SelectObject : MonoBehaviour
     // Start is called before the first frame update    
     void Start()
     {
+
         orderCount = flow.expectedOrder.Count;
         cams = Camera.main.GetComponent<CameraPositions>();
+
     }
 
     // Update is called once per frame    
     void Update()
     {
-        print("one: " + flow.isPackOver);
-        print("one: " + flow.hasStarted);
         if (!flow.isPackOver && flow.hasStarted)
         {
             if (Input.GetMouseButtonDown(0))
@@ -63,16 +63,24 @@ public class SelectObject : MonoBehaviour
                 pres.Rotate();
             }
         }
+        
+        if (boxCount == 3)
+        {
+            boxCount++;
+            flow.StartConfettiPhaseTwo();
+            flow.isPackOver = true;
+        }
+        
 
     }
     public void AddSelectedObject()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        
+
         if (tableCount < orderCount && flow.bottomMenu.transform.GetChild(tableCount).gameObject.activeSelf)
         {
-            print("here");
+
             //take objects out of drawer
             if (Physics.Raycast(ray, out hit))
             {
@@ -83,6 +91,7 @@ public class SelectObject : MonoBehaviour
 
                 if (hit.transform.tag == "Beauty" && !hit.transform.GetComponent<ProductSelected>().isSelected)
                 {
+                    hit.transform.gameObject.AddComponent<DragObject>();
                     am.PlayClip(0);
                     //move object to table with rotation and jump
                     StartCoroutine(Move(hit, tableCount));
@@ -98,6 +107,7 @@ public class SelectObject : MonoBehaviour
                     {
                         hit.transform.parent.parent.GetComponent<DrawerState>().pull.Play("closepush");
                     }
+
                     flow.isOpen = false;
                     flow.bottomMenu.transform.GetChild(tableCount).GetComponent<Image>().color = temp;
                     //add name to the list
@@ -112,7 +122,8 @@ public class SelectObject : MonoBehaviour
                     {
                         flow.EndPickPhase();
                         StartCoroutine(DelaySound());
-                        flow.StartPackPhase();
+                        flow.StartConfettiPhase();
+                        flow.isOpen = true;
                     }
                 }
             }
@@ -120,18 +131,18 @@ public class SelectObject : MonoBehaviour
         //put objects from table into box
         else if (Physics.Raycast(ray, out hit))
         {
-            print("here");
+            print("hereweareagain22222");
             if (hit.transform.tag == "Beauty" && !hit.transform.GetComponent<ProductSelected>().isAdded)
             {
                 am.PlayClip(4);
-                print("here");
-                hit.transform.SetParent(GameObject.Find("Present").transform);
-                StartCoroutine(AddToBox(hit));
-                boxCount++;
+                print("hereweareagain1111");
+
             }
             if (boxCount == tableCount)
             {
+                print("HELLYES");
                 flow.isPackOver = true;
+  
             }
         }
     }
@@ -154,20 +165,28 @@ public class SelectObject : MonoBehaviour
     public IEnumerator AddToBox(RaycastHit hit)
     {
 
-        Tween knockUpItem = hit.transform.DOJump(hit.transform.position, 0.1f, 0, 0.25f, false);
-        yield return knockUpItem.WaitForCompletion();
-        Tween moveItemToBox = DOTween.To(() => hit.transform.position, x => hit.transform.position = x, present.position + new Vector3(0, 2, 0), 0.75f);
-        yield return moveItemToBox.WaitForCompletion();
-        Tween moveLid = DOTween.To(() => hit.transform.position, x => hit.transform.position = x, present.position + new Vector3(0, 0.35f, 0), 0.75f);
-        Tween rotato = hit.transform.DORotateQuaternion(hit.transform.rotation, 1.25f);
-        Tween rotate = hit.transform.DOLocalRotate(new Vector3(320, 90, 320), 1.25f, RotateMode.FastBeyond360);
-        hit.transform.GetComponent<ProductSelected>().isSelected = true;
+        // Tween knockUpItem = hit.transform.DOJump(hit.transform.position, 0.1f, 0, 0.25f, false);
+        // yield return knockUpItem.WaitForCompletion();
+        // Tween moveItemToBox = DOTween.To(() => hit.transform.position, x => hit.transform.position = x, present.position + new Vector3(0, 2, 0), 0.75f);
+
+        // Tween moveLid = DOTween.To(() => hit.transform.position, x => hit.transform.position = x, present.position + new Vector3(0, 0.35f, 0), 0.75f);
+        // Tween rotato = hit.transform.DORotateQuaternion(hit.transform.rotation, 1.25f);
+        // Tween rotate = hit.transform.DOLocalRotate(new Vector3(320, 90, 320), 1.25f, RotateMode.FastBeyond360);
+        yield return new WaitForSeconds(0.1f);
+        hit.transform.GetComponent<ProductSelected>().isAdded = true;
+        CheckBox();
+
 
     }
     public IEnumerator DelaySound()
     {
         yield return new WaitForSeconds(1.6f);
         am.PlayClip(5);
+    }
+    public void CheckBox()
+    {
+        boxCount = GameObject.Find("ProductsInBox").transform.childCount;
+      
     }
 
 
