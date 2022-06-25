@@ -20,12 +20,8 @@ public class StickerSelector : MonoBehaviour
         decal.Texture = null;
         Debug.Log("in selection");
         inboxTrigger.SetActive(false);
-
         print(decal.Texture);
         decal.Texture = GetComponent<Image>().mainTexture;
-
-
-
     }
 
 }

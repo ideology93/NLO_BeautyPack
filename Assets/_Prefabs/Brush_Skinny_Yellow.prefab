@@ -144,6 +144,7 @@ MonoBehaviour:
   spritesObject: {fileID: 0}
   isSelected: 0
   isAdded: 0
+  isInDrawer: 1
   sprite: {fileID: 0}
 --- !u!1 &7208258388951542008
 GameObject:

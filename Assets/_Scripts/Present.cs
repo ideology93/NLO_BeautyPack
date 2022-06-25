@@ -43,20 +43,4 @@ public class Present : MonoBehaviour
         }
     }
 
-    public void Rotate()
-    {
-
-        //StartCoroutine(MoveLid());
-
-    }
-    public IEnumerator MoveLid()
-    {
-
-        Tween flip = transform.DOMove(transform.parent.position + new Vector3(0, 1.5f, 0), 1.5f, false);
-        yield return flip.WaitForCompletion();
-        Tween rotate = transform.DOLocalRotate(new Vector3(0, 0, 361.5f), 2, RotateMode.FastBeyond360);
-        Tween goDown = transform.DOMove(transform.parent.position + new Vector3(0, 0.32f, 0), 2, false);
-        yield return new WaitForSeconds(2f);
-        flow.EndPackPhase();
-    }
 }

@@ -20,8 +20,7 @@ public class SelectObject : MonoBehaviour
 
     [SerializeField] public int tableCount = 0;
     [SerializeField] public int boxCount = 0;
-    public int orderCount;
-    private float timer = 1;
+    public int orderCount;  
 
     [Header("Scripts and Animators")]
     public Animator anim;
@@ -54,23 +53,15 @@ public class SelectObject : MonoBehaviour
                 AddSelectedObject();
             }
         }
-        if (flow.isPackOver)
-        {
-            timer -= Time.deltaTime;
-            if (timer <= 0 && timer >= -1)
-            {
-                timer = -10000;
-                pres.Rotate();
-            }
-        }
-        
+
+
         if (boxCount == 3)
         {
             boxCount++;
             flow.StartConfettiPhaseTwo();
             flow.isPackOver = true;
         }
-        
+
 
     }
     public void AddSelectedObject()
@@ -131,18 +122,18 @@ public class SelectObject : MonoBehaviour
         //put objects from table into box
         else if (Physics.Raycast(ray, out hit))
         {
-            print("hereweareagain22222");
+            
             if (hit.transform.tag == "Beauty" && !hit.transform.GetComponent<ProductSelected>().isAdded)
             {
                 am.PlayClip(4);
-                print("hereweareagain1111");
+              
 
             }
             if (boxCount == tableCount)
             {
-                print("HELLYES");
+             
                 flow.isPackOver = true;
-  
+
             }
         }
     }
@@ -153,10 +144,18 @@ public class SelectObject : MonoBehaviour
 
         if (!hit.transform.GetComponent<ProductSelected>().isSelected)
         {
+
             hit.transform.DOJump(hit.transform.position, 1, 1, 2, false);
             yield return new WaitForSeconds(0.5f);
             DOTween.To(() => hit.transform.position, x => hit.transform.position = x, positions.GetChild(tableCount).position, 1.5f);
-            hit.transform.DORotateQuaternion(positions.GetChild(tableCount).rotation, 1.25f);
+            if (hit.transform.name.Contains("Brush"))
+            {
+
+                hit.transform.DORotateQuaternion(hit.transform.rotation, 1.25f);
+
+            }
+            else
+                hit.transform.DORotateQuaternion(positions.GetChild(tableCount).rotation, 1.25f);
             hit.transform.GetComponent<ProductSelected>().isSelected = true;
         }
 
@@ -174,7 +173,7 @@ public class SelectObject : MonoBehaviour
         // Tween rotate = hit.transform.DOLocalRotate(new Vector3(320, 90, 320), 1.25f, RotateMode.FastBeyond360);
         yield return new WaitForSeconds(0.1f);
         hit.transform.GetComponent<ProductSelected>().isAdded = true;
-        CheckBox();
+
 
 
     }
@@ -186,7 +185,7 @@ public class SelectObject : MonoBehaviour
     public void CheckBox()
     {
         boxCount = GameObject.Find("ProductsInBox").transform.childCount;
-      
+
     }
 
 
