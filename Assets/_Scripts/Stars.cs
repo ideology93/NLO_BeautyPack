@@ -71,7 +71,7 @@ public class Stars : MonoBehaviour
 
         }
         StarCount += a;
-        ss.FillSlider(a * 20);
+        
     }
 
 

@@ -20,7 +20,7 @@ public class SelectObject : MonoBehaviour
 
     [SerializeField] public int tableCount = 0;
     [SerializeField] public int boxCount = 0;
-    public int orderCount;  
+    public int orderCount;
 
     [Header("Scripts and Animators")]
     public Animator anim;
@@ -28,16 +28,15 @@ public class SelectObject : MonoBehaviour
     [SerializeField] private Present pres;
     public Drawer_Pull_Z drawer;
     public Animator drawerAnimate;
-    void Awake()
-    {
-        orderCount = 0;
-        tableCount = 0;
-        boxCount = 0;
-    }
+
     // Start is called before the first frame update    
+
     void Start()
     {
 
+        orderCount = 0;
+        tableCount = 0;
+        boxCount = 0;
         orderCount = flow.expectedOrder.Count;
         cams = Camera.main.GetComponent<CameraPositions>();
 
@@ -55,8 +54,9 @@ public class SelectObject : MonoBehaviour
         }
 
 
-        if (boxCount == 3)
+        if (boxCount == 3 && !flow.cardPhase)
         {
+     
             boxCount++;
             flow.StartConfettiPhaseTwo();
             flow.isPackOver = true;
@@ -69,7 +69,7 @@ public class SelectObject : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (tableCount < orderCount && flow.bottomMenu.transform.GetChild(tableCount).gameObject.activeSelf)
+        if (tableCount < orderCount)
         {
 
             //take objects out of drawer
@@ -79,7 +79,7 @@ public class SelectObject : MonoBehaviour
                 {
                     flow.Toggle(dialogue);
                 }
-
+             
                 if (hit.transform.tag == "Beauty" && !hit.transform.GetComponent<ProductSelected>().isSelected)
                 {
                     hit.transform.gameObject.AddComponent<DragObject>();
@@ -105,6 +105,8 @@ public class SelectObject : MonoBehaviour
                     flow.currentOrder.Add(hit.transform.name);
 
                     hit.transform.SetParent(GameObject.Find("ObjectsOnTable").transform);
+                    if (hit.transform.name.Contains("Tube") || hit.transform.name.Contains("Blush") || hit.transform.name.Contains("Polish"))
+                        hit.transform.localScale = hit.transform.localScale + new Vector3(1f, 1f, 1f);
                     cams.MoveToTable();
                     drawer.camPos = 0;
 
@@ -113,7 +115,7 @@ public class SelectObject : MonoBehaviour
                     {
                         flow.EndPickPhase();
                         StartCoroutine(DelaySound());
-                        flow.StartConfettiPhase();
+                        flow.StartBoxPhase();
                         flow.isOpen = true;
                     }
                 }
@@ -122,16 +124,16 @@ public class SelectObject : MonoBehaviour
         //put objects from table into box
         else if (Physics.Raycast(ray, out hit))
         {
-            
+
             if (hit.transform.tag == "Beauty" && !hit.transform.GetComponent<ProductSelected>().isAdded)
             {
                 am.PlayClip(4);
-              
+
 
             }
             if (boxCount == tableCount)
             {
-             
+
                 flow.isPackOver = true;
 
             }
@@ -153,6 +155,10 @@ public class SelectObject : MonoBehaviour
 
                 hit.transform.DORotateQuaternion(hit.transform.rotation, 1.25f);
 
+            }
+            else if (hit.transform.name.Contains("Tube_"))
+            {
+                hit.transform.DORotateQuaternion(Quaternion.Euler(0, 180, 90), 1.25f);
             }
             else
                 hit.transform.DORotateQuaternion(positions.GetChild(tableCount).rotation, 1.25f);
@@ -184,7 +190,7 @@ public class SelectObject : MonoBehaviour
     }
     public void CheckBox()
     {
-        boxCount = GameObject.Find("ProductsInBox").transform.childCount;
+        boxCount = GameObject.Find("Heart_ProductsInBox").transform.childCount;
 
     }
 

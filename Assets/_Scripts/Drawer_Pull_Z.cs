@@ -35,7 +35,7 @@ public class Drawer_Pull_Z : MonoBehaviour
         if (flow.hasStarted)
         {
 
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonUp(0))
             {
                 if (Physics.Raycast(ray, out hit))
                 {
@@ -97,7 +97,7 @@ public class Drawer_Pull_Z : MonoBehaviour
 
     IEnumerator opening()
     {
-        Debug.Log("opening");
+       
         flow.isOpen = true;
         pull.Play("openpull");
         yield return new WaitForSeconds(.5f);

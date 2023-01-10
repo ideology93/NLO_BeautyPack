@@ -49,7 +49,7 @@ public class DragObject : MonoBehaviour
 
             if (hit.collider.tag == "Beauty" || hit.collider.tag == "Card")
             {
-                print("At targetting");
+        
                 target = hit.transform;
             }
             isHeld = true;
@@ -81,7 +81,7 @@ public class DragObject : MonoBehaviour
         }
         if (flow.allowDrag)
         {
-            print("At moving non confetti");
+    
             transform.position = new Vector3(GetMouseAsWorldPoint().x + mOffset.x, target.position.y, GetMouseAsWorldPoint().z + mOffset.z);
 
         }
@@ -108,21 +108,28 @@ public class DragObject : MonoBehaviour
         {
             if (other.tag == "Inbox" && (gameObject.tag == "Beauty" || gameObject.tag == "Card"))
             {
-                print("At in trigger");
-                if (gameObject.tag == "Beauty")
+                
+                if (gameObject.tag == "Beauty"){
                     transform.position = new Vector3(transform.position.x, transform.position.y - 0.02f, transform.position.z);
+                    if(transform.gameObject.GetComponent<Rigidbody>() == null){
+
+                    
+                    transform.gameObject.AddComponent<Rigidbody>();
+                    transform.gameObject.GetComponent<Rigidbody>().mass = 1000;
+                    }
+                }
                 else if(gameObject.tag=="Card")
-                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+                    transform.position = new Vector3(transform.position.x, transform.position.y , transform.position.z);
                 if (gameObject.tag != "Card")
                 {
                     transform.GetComponent<ProductSelected>().isAdded = true;
                 }
-                transform.SetParent(GameObject.Find("ProductsInBox").transform);
+                transform.SetParent(GameObject.Find("Heart_ProductsInBox").transform);
                 so.CheckBox();
                 if (gameObject.tag == "Card")
                 {
                     flow.EndCardPhase();
-                    Destroy(gameObject, 1.4f);
+                    Destroy(gameObject, 0.2f);
                 }
 
             }

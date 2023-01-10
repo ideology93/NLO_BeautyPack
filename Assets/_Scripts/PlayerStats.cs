@@ -22,7 +22,7 @@ public class PlayerStats : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(coins);
+        coins = PlayerPrefs.GetInt("coins", coins);
         //PlayerPrefs.DeleteAll();
         coinsText.text = coins.ToString();
         previousLevelCoins = coins;
@@ -53,6 +53,7 @@ public class PlayerStats : MonoBehaviour
 
             yield return new WaitForSeconds(0.001f);
         }
+        PlayerPrefs.SetInt("coins", coins);
 
 
 

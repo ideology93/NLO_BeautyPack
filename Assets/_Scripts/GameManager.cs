@@ -2,12 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameManager : MonoBehaviour
 {
     private static GameManager _instance;
     private GameFlow flow;
     public GameObject settingsUI;
+    public Material[] materials;
+    public GameObject confetiPrefab;
+    public GameObject confettiCylinder;
     public static GameManager Instance
+
+
     {
         get
         {
@@ -18,11 +24,15 @@ public class GameManager : MonoBehaviour
     }
     private void Awake()
     {
+
         _instance = this;
+
+
     }
     private void Start()
     {
         flow = GetComponent<GameFlow>();
+        
     }
     public void Exit()
     {
@@ -31,12 +41,15 @@ public class GameManager : MonoBehaviour
     public void StartMenu(GameObject ui)
     {
         settingsUI.SetActive(!settingsUI.activeSelf);
-       
+
     }
     public void Resume()
     {
-        
+
         settingsUI.SetActive(false);
     }
+ 
+
+
 
 }

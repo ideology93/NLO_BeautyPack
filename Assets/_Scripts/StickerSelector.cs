@@ -8,20 +8,18 @@ public class StickerSelector : MonoBehaviour
 {
     private GameObject inboxTrigger;
     public GameObject P3DManager;
+    private P3dPaintDecal decal;
     void Start()
     {
         P3DManager = GameObject.Find("P3DManager");
         inboxTrigger = GameObject.Find("Triggers");
+        decal = P3DManager.GetComponent<P3dPaintDecal>();
     }
     // Start is called before the first frame update
     public void SelectSticker()
     {
-        P3dPaintDecal decal = P3DManager.GetComponent<P3dPaintDecal>();
-        decal.Texture = null;
-        Debug.Log("in selection");
-        inboxTrigger.SetActive(false);
-        print(decal.Texture);
-        decal.Texture = GetComponent<Image>().mainTexture;
+
+        decal.Texture = GetComponent<RawImage>().texture;
     }
 
 }

@@ -28,7 +28,7 @@ public class SceneFader : MonoBehaviour
         {
             t -= Time.deltaTime;
             float a = curve.Evaluate(t);
-            img.color = new Color(255f, 255f, 255f, a);
+            img.color = new Color(img.color.r, img.color.g, img.color.b, a);
             yield return 0;
         }
 
